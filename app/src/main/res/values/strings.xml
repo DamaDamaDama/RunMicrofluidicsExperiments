@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Run Microfluidics Experiments</string>
+    <string name="bottomText">App created by Alan Munirji University of Pittsburgh,
+        Computational and Systems Biology 5/29/2019 REC Lee Lab </string>
+    <string name="get_started"> Tap Here To Get Started </string>
+    <string name="heading_main">Microfluidics Experimenter</string>
+    <string name="heading_ble">Connect to the ESP32 using Bluetooth</string>
+    <string name="subheading_ble">Communication between the microfluidics device and the device you
+            are using right now depends on Bluetooth Low Energy technology. Make sure you allow the
+            app turn on Bluetooth if it is not yet on.</string>
+    <string name="ble_not_supported">Bluetooth Low Energy is not supported by this device. The app
+            will not work on this device.</string>
+    <string name="heading_get_started">Get started with the app by following these steps:</string>
+    <string name="upload_experiment_button">Upload Experiment</string>
+    <string name="run_experiment_button">Run Experiment</string>
+    <string name="connect_to_esp32_microfluidics_controller_button">Connect to ESP32 (microfluidics
+            controller)</string>
+    <string name="CLIENT_CHARACTERISTIC_CONFIG">00002902-0000-1000-8000-00805f9b34fb"</string>
+    <string name="test_galaxy">Test Galaxy</string>
+    <string name="test_galaxy_2">Test Galaxy 2</string>
+    <string name="step2">Then, tap on "Connect to ESP32" and connect to the micro-controller via Bluetooth. Experiment is sent over and then started via a Go button. Any pauses put in the experiment can be resumed from using the Go button. If reset is pressed, experiment will start from the beginning </string>
+    <string name="step1">First, use the upload experiment button to choose an experiment created via
+        Google Sheets or Microsoft Excel. The filetypes supported are .csv, .xlsx, and .xls, currently.</string>
+</resources>
