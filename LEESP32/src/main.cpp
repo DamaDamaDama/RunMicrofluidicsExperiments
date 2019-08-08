@@ -53,11 +53,12 @@ int buttonLimit = 39;     //Limit button (Button 3, used for zeroing out the mot
 int buttonLimitState = 0;     //Holds state of limit button (Button 3)
 int count = 0;
 float microstep = .0550; //Going to set this to a much larger value in the hopes that heights more than 15 can be
-                    //used. Originally was .00625 (Maybe try 0.0555 or 0.0575 next! 0.0550 gets ~5.1mm consistently) 
+                        //used. Originally was .00625 (Maybe try 0.0555 or 0.0575 next! 0.0550 gets ~5.1mm 
+                        //consistently).
 //Set Initial Global Motor speed and acceleration 
-int motorAcceleration = 2000; // [step/second] (use values between 0 and 3000, 
+int motorAcceleration = 5000; // [step/second] (use values between 0 and 3000, 
 //smaller number = smaller acceleration) Recommend 2000
-int motorMaxSpeed = 6000; // [steps/second]
+int motorMaxSpeed = 10000; // [steps/second]
   //*Note speed will also depend on step sizes and some step sizes will exclude certain speeds
 
 ////~~~OLED declarations~~~
@@ -282,14 +283,6 @@ int sortMotors(std::vector<std::string> aggregate){
     }
   }
 
-  //Testing with my experiment, I got 6,635 seconds. Is this right? That would be a 2 hour experiment.
-  Serial.println("All the delays added up is this many seconds (compare to exp completion time): ");
-  int delaytotal = 0;
-  for(int y = 0; y < delays.size(); y++){
-    delaytotal += delays[y];
-  }
-  Serial.println(delaytotal);
-
   return 0;
 }
 
@@ -317,58 +310,64 @@ bool isValid(std::string receivedData, std::string receivedHash){
 
 int zeroMotors(){
   PumpFunc::wakeMotors();
+  delay(500);
 
   while(digitalRead(buttonLimit) == 1){
-    Serial.print("Moving down 1. digital read:");
-    Serial.println(digitalRead(buttonLimit));
     PumpFunc::moveBy(1, -3000); //Go down a step
   }
   stepper1.setCurrentPosition(0);
   PumpFunc::moveStepper(1, 5); //Take it 5mm off the limit switch. This will actually be 0.
   PumpFunc::stepAllMotors();
+  stepper1.setCurrentPosition(0);
   while(digitalRead(buttonLimit) == 1){
     PumpFunc::moveBy(2, -3000); //Go down a step
   }
   stepper2.setCurrentPosition(0);
   PumpFunc::moveStepper(2, 5); //Take it 5mm off the limit switch. This will actually be 0.
   PumpFunc::stepAllMotors();
+  stepper2.setCurrentPosition(0);
   while(digitalRead(buttonLimit) == 1){
     PumpFunc::moveBy(3, -3000); //Go down a step
   }
   stepper3.setCurrentPosition(0);
   PumpFunc::moveStepper(3, 5); //Take it 5mm off the limit switch. This will actually be 0.
   PumpFunc::stepAllMotors();
+  stepper3.setCurrentPosition(0);
   while(digitalRead(buttonLimit) == 1){
     PumpFunc::moveBy(4, -3000); //Go down a step
   }
   stepper4.setCurrentPosition(0);
   PumpFunc::moveStepper(4, 5); //Take it 5mm off the limit switch. This will actually be 0.
   PumpFunc::stepAllMotors();
+  stepper4.setCurrentPosition(0);
   while(digitalRead(buttonLimit) == 1){
     PumpFunc::moveBy(5, -3000); //Go down a step
   }
   stepper5.setCurrentPosition(0);
   PumpFunc::moveStepper(5, 5); //Take it 5mm off the limit switch. This will actually be 0.
   PumpFunc::stepAllMotors();
+  stepper5.setCurrentPosition(0);
   while(digitalRead(buttonLimit) == 1){
     PumpFunc::moveBy(6, -3000); //Go down a step
   }
   stepper6.setCurrentPosition(0);
   PumpFunc::moveStepper(6, 5); //Take it 5mm off the limit switch. This will actually be 0.
   PumpFunc::stepAllMotors();
+  stepper6.setCurrentPosition(0);
   while(digitalRead(buttonLimit) == 1){
     PumpFunc::moveBy(7, -3000); //Go down a step
   }
   stepper7.setCurrentPosition(0);
   PumpFunc::moveStepper(7, 5); //Take it 5mm off the limit switch. This will actually be 0.
   PumpFunc::stepAllMotors();
-  delay(100);
+  stepper7.setCurrentPosition(0);
   while(digitalRead(buttonLimit) == 1){
     PumpFunc::moveBy(8, -3000); //Go down a step
   }
   stepper8.setCurrentPosition(0);
   PumpFunc::moveStepper(8, 5); //Take it 5mm off the limit switch. This will actually be 0.
   PumpFunc::stepAllMotors();
+  stepper8.setCurrentPosition(0);
   return 0;
 }
 
